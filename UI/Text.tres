@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bwisw28ifun07"]
+
+[ext_resource type="FontFile" uid="uid://c8ui8vyingsla" path="res://assets/pixel_rpg.ttf" id="1_aym4s"]
+
+[resource]
+line_spacing = 6.0
+font = ExtResource("1_aym4s")
+font_size = 6

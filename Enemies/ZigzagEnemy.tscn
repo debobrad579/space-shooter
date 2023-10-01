@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://baskvl8uhgi07"]
+
+[ext_resource type="PackedScene" uid="uid://dqpblqa476uyo" path="res://Enemies/Enemy.tscn" id="1_7odmq"]
+[ext_resource type="Script" path="res://Enemies/ZigzagEnemy.cs" id="2_7i73l"]
+[ext_resource type="Texture2D" uid="uid://cbib5uvn8sj6p" path="res://assets/zigzag-enemy.png" id="2_wh0rv"]
+
+[node name="ZigzagEnemy" instance=ExtResource("1_7odmq")]
+script = ExtResource("2_7i73l")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_wh0rv")
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+polygon = PackedVector2Array(-5, -3, -3, -7, 0, -7, 7, -1, 7, 1, 0, 7, -3, 7, -5, 3)
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
+position = Vector2(1, 0)
+scale = Vector2(0.7, 0.8)
+
+[node name="Timer" type="Timer" parent="." index="4"]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_OnTimerTimeout"]

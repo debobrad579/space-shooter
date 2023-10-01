@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2l8tyedep8gs"]
+
+[ext_resource type="PackedScene" uid="uid://dqpblqa476uyo" path="res://Enemies/Enemy.tscn" id="1_rxvcb"]
+[ext_resource type="Script" path="res://Enemies/FishEnemy.cs" id="2_4ybhg"]
+[ext_resource type="Texture2D" uid="uid://ctfyjpjuthgp2" path="res://assets/FishEnemy-Sheet.png" id="2_17g6x"]
+
+[sub_resource type="Animation" id="Animation_pie1x"]
+resource_name = "Falling"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionPolygon2D:polygon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [PackedVector2Array(-6, 4, -3, 4, 7, -1, 3, -6, -2, -6, -7, 0, -7, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_wg2fv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionPolygon2D:polygon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [PackedVector2Array(-4, -6, -7, -4, -7, -1, 4, 5, 6, 2, 6, -1, 0, -6)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0phel"]
+_data = {
+"Falling": SubResource("Animation_pie1x"),
+"RESET": SubResource("Animation_wg2fv")
+}
+
+[node name="FishEnemy" instance=ExtResource("1_rxvcb")]
+script = ExtResource("2_4ybhg")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_17g6x")
+hframes = 2
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+polygon = PackedVector2Array(-4, -6, -7, -4, -7, -1, 4, 5, 6, 2, 6, -1, 0, -6)
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
+position = Vector2(0, -0.5)
+scale = Vector2(0.8, 0.65)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+autoplay = "RESET"
+libraries = {
+"": SubResource("AnimationLibrary_0phel")
+}

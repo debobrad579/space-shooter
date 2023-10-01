@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://byoliy38nf8pe"]
+
+[ext_resource type="Script" path="res://Effects/HitEffect.cs" id="1_tbw2e"]
+[ext_resource type="AudioStream" uid="uid://312266ji53j8" path="res://assets/hit_sound.wav" id="2_obusb"]
+
+[node name="HitEffect" type="Node2D"]
+script = ExtResource("1_tbw2e")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 6
+lifetime = 0.5
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 40.0
+scale_amount_min = 1.5
+scale_amount_max = 1.5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_obusb")
+autoplay = true
+bus = &"Effects"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_OnTimerTimeout"]

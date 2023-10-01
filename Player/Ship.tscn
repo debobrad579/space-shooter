@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://ci10r325c6up"]
+
+[ext_resource type="Script" path="res://Player/Ship.cs" id="1_gi5ce"]
+[ext_resource type="Texture2D" uid="uid://bx0ls3iyoas70" path="res://assets/ship.png" id="2_q8rf4"]
+[ext_resource type="PackedScene" uid="uid://b6o7cvrofsy05" path="res://Effects/EffectCreator.tscn" id="3_ywkka"]
+[ext_resource type="PackedScene" uid="uid://cagtn2j3oi10l" path="res://Effects/ExplosionEffect.tscn" id="4_w7dad"]
+
+[node name="Ship" type="Area2D"]
+z_index = 1
+script = ExtResource("1_gi5ce")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_q8rf4")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-7, -4, -4, -4, -4, -7, -2, -7, 3, -2, 5, -2, 7, -1, 7, 1, 5, 2, 3, 2, -2, 7, -4, 7, -4, 4, -7, 4)
+
+[node name="EffectCreator" parent="." instance=ExtResource("3_ywkka")]
+EFFECT_SCENE = ExtResource("4_w7dad")
+
+[connection signal="area_entered" from="." to="." method="_OnAreaEntered"]

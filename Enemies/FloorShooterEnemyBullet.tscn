@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dglg7dxbhfy6y"]
+
+[ext_resource type="PackedScene" uid="uid://cqyirfhecf7f6" path="res://Enemies/EnemyBullet.tscn" id="1_c0aru"]
+[ext_resource type="Texture2D" uid="uid://b5q3hkiqehhso" path="res://assets/BigBullet.png" id="2_4rf13"]
+[ext_resource type="Script" path="res://Enemies/FloorShooterEnemyBullet.cs" id="2_dqwno"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fikkb"]
+size = Vector2(8, 14)
+
+[node name="FloorShooterEnemyBullet" instance=ExtResource("1_c0aru")]
+script = ExtResource("2_dqwno")
+
+[node name="Sprite2D" parent="." index="0"]
+rotation = 0.0
+texture = ExtResource("2_4rf13")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_fikkb")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
+position = Vector2(-5.96046e-08, 0.5)
+scale = Vector2(0.4, 0.75)

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6o7cvrofsy05"]
+
+[ext_resource type="Script" path="res://Effects/EffectCreator.cs" id="1_2ls8b"]
+
+[node name="EffectCreator" type="Node2D"]
+script = ExtResource("1_2ls8b")
